@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react'
-import axios from 'axios'
+import "../App.css"
 import search_icon from '../assets/search.png'
 import clear_icon from '../assets/clear.png'
 import cloud_icon from '../assets/cloud.png'
@@ -61,8 +61,8 @@ const WeatherApp = () => {
         searchCity("london")
     },[])
   return (
-       <div className=' p-10 place-content-center rounded grid bg-blue-200 h-screen font-mono '>
-        <div className='flex flex-col items-center bg-blue-600 rounded-md p-10'>
+       <div className=' bg-[url("./assets/background.jpg")] brightness-5 bg-cover p-10 place-content-center rounded grid  h-screen font-mono'>
+        <div className='flex flex-col items-center bg-white/25 rounded-md p-10 backdrop-blur-2xl border-white/40'>
             <div className='flex gap-4 '>
                 <input ref={inputRef} className='p-2 cursor-pointer border-none h-9 rounded-3xl text-gray-500 bg-gray-50 outline-0' type="text" placeholder='Search City' />
                 <img onClick={() => searchCity(inputRef.current.value)} src={search_icon} alt="Search icon"  className='p-3 cursor-pointer w-10 rounded-3xl bg-gray-50 '/>
