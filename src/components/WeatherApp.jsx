@@ -11,7 +11,6 @@ import snow_icon from '../assets/snow.png'
 
 const WeatherApp = () => {
     const [data, setData] = useState(false);
-
     const inputRef = useRef();
     const allIcons ={
         "01d": clear_icon,
@@ -29,15 +28,14 @@ const WeatherApp = () => {
         "13d": snow_icon,
         "13n": snow_icon
     }
-
     const searchCity = async(city) =>{
         if(city === ''){
             alert("Enter city name")
             return;
         }
         try{
-            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_API_KEY}`
-            console.log(import.meta.env.VITE_API_KEY)
+            const apiKey = import.meta.env.VITE_API_KEY
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
             const res = await fetch(url);
             const data = await res.json()
             if(!res.ok){
