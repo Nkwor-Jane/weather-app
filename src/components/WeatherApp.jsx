@@ -37,6 +37,7 @@ const WeatherApp = () => {
         }
         try{
             const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_API_KEY}`
+            console.log(import.meta.env.VITE_API_KEY)
             const res = await fetch(url);
             const data = await res.json()
             if(!res.ok){
@@ -44,7 +45,7 @@ const WeatherApp = () => {
                 return;
             }
             console.log(data)
-            const icon = allIcons[data.weather[0].icon] || clear_icon
+            const icon = allIcons[data.weather[0].icon] || clear_icon;
             setData({
                 humidity: data.main.humidity,
                 windSpeed: data.wind.speed,
@@ -58,7 +59,7 @@ const WeatherApp = () => {
         }
     }
     useEffect(() =>{
-        searchCity("london")
+        searchCity("Nigeria")
     },[])
   return (
        <div className=' bg-[url("./assets/background.jpg")] brightness-5 bg-cover p-10 place-content-center rounded grid  h-screen font-mono'>
@@ -96,4 +97,4 @@ const WeatherApp = () => {
   )
 }
 
-export default WeatherApp
+export default WeatherApp;
